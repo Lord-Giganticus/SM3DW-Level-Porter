@@ -25,7 +25,7 @@ namespace Byml.cs.CLI
             }
             else
             {
-                Console.WriteLine("Enter the path to a byml file here:\n");
+                Console.WriteLine("Enter the path to a byml file here:");
                 var path = Console.ReadLine();
                 if (File.Exists(path))
                 {

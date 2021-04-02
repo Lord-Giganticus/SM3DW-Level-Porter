@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sarc.cs.GUI", "Sarc.cs.GUI\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Byml.cs", "Byml.cs", "{789B7C95-94BD-4831-98A1-1DFD8DD4AB31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byml.cs.CLI", "Byml.cs.CLI\Byml.cs.CLI.csproj", "{E9BED1AB-AD11-41E4-A86C-2403366D53A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byml.cs.CLI", "Byml.cs.CLI\Byml.cs.CLI.csproj", "{E9BED1AB-AD11-41E4-A86C-2403366D53A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
