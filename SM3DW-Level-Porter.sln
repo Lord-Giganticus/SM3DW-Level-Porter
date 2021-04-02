@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Byml.cs", "Byml.cs", "{789B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byml.cs.CLI", "Byml.cs.CLI\Byml.cs.CLI.csproj", "{E9BED1AB-AD11-41E4-A86C-2403366D53A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM3DW-Level-Porter", "SM3DW-Level-Porter\SM3DW-Level-Porter.csproj", "{6CD8E9D6-9B1C-4840-8E1C-D1F6934CB69F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{E9BED1AB-AD11-41E4-A86C-2403366D53A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9BED1AB-AD11-41E4-A86C-2403366D53A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9BED1AB-AD11-41E4-A86C-2403366D53A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CD8E9D6-9B1C-4840-8E1C-D1F6934CB69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD8E9D6-9B1C-4840-8E1C-D1F6934CB69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD8E9D6-9B1C-4840-8E1C-D1F6934CB69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD8E9D6-9B1C-4840-8E1C-D1F6934CB69F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
