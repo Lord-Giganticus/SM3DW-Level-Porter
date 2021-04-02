@@ -85,12 +85,6 @@ namespace Sarc.cs.GUI
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            label2.Text = Data.endianness.FlipByteOrder().ToString();
-            Data.endianness = Data.endianness.FlipByteOrder();
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             var item = listBox1.SelectedItem.ToString();
