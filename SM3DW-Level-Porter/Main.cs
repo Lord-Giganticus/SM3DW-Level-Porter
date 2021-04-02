@@ -104,6 +104,7 @@ namespace SM3DW_Level_Porter
                 var data = Data.GetBymlFileData();
                 data.byteOrder = data.byteOrder.SwitchByteOrder();
                 WiiU_dict.Add(item.Key, data.GetBytes());
+                File.Delete(item.Key);
             }
             var Switch_dict = new Dictionary<string, byte[]>();
             foreach (var item in Switch_Byml_Files)
