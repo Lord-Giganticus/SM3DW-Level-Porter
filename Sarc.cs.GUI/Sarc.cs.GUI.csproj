@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sarc.cs.lib\Sarc.cs.lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SARCExt">
+      <HintPath>..\Lib\SARCExt.dll</HintPath>
+    </Reference>
+    <Reference Include="Syroot.BinaryData">
+      <HintPath>..\Lib\Syroot.BinaryData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
