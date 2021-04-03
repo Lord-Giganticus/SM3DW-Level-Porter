@@ -31,11 +31,6 @@ namespace SM3DW_Level_Porter.Ext
             return File.OpenRead(file.FullName);
         }
 
-        public static BinaryDataWriter WriteFile(this FileInfo file)
-        {
-            return new BinaryDataWriter(file.ReadFileAsStream());
-        }
-
         public static BinaryDataReader FlipByteOrder(this BinaryDataReader reader)
         {
             return new BinaryDataReader(reader.BaseStream)
