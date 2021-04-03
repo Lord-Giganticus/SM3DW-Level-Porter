@@ -14,6 +14,8 @@ using SZS;
 using Sarc.cs.lib.Ext;
 using SARCExt;
 using Byml.cs.lib.Ext;
+using Syroot.BinaryData;
+using SM3DW_Level_Porter.Classes;
 
 namespace SM3DW_Level_Porter
 {
@@ -114,10 +116,13 @@ namespace SM3DW_Level_Porter
                     if (item.Key == i.Key)
                     {
                         Switch_dict.Add(item.Key, i.Value);
+                    } else
+                    {
+                        Switch_dict.Add(item.Key, item.Value);
                     }
                 }
             }
-            Switch_Data.endianness = Syroot.BinaryData.ByteOrder.LittleEndian;
+            Switch_Data.endianness = ByteOrder.LittleEndian;
             Switch_Data.Files = Switch_dict;
             var pack_data = Switch_Data.PackSarcData().GetBytes();
             var encoded_data = YAZ0.Compress(pack_data);
@@ -133,6 +138,29 @@ namespace SM3DW_Level_Porter
                 File.WriteAllBytes(save.FileName, encoded_data);
                 MessageBox.Show("Complete!");
             }
+        }
+
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (BackColor == SystemColors.Control)
+            {
+                BackColor = SystemColors.ControlDarkDark;
+                toolStrip1.BackColor = BackColor;
+                toolStripButton1.Text = "Light Mode";
+            } else
+            {
+                BackColor = SystemColors.Control;
+                toolStrip1.BackColor = BackColor;
+                toolStripButton1.Text = "Dark Mode";
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Colors colors = new Colors();
+            BackColor = colors.GetRandomColor();
+            toolStrip1.BackColor = BackColor;
         }
     }
 }
