@@ -41,6 +41,7 @@ namespace SM3DW_Level_Porter
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.button4 = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,11 +103,11 @@ namespace SM3DW_Level_Porter
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(16, 284);
+            this.button3.Location = new System.Drawing.Point(12, 284);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(426, 39);
+            this.button3.Size = new System.Drawing.Size(192, 39);
             this.button3.TabIndex = 6;
-            this.button3.Text = "Convert";
+            this.button3.Text = "Convert to Switch";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -129,7 +130,7 @@ namespace SM3DW_Level_Porter
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(72, 22);
             this.toolStripButton1.Text = "Light Mode";
-            this.toolStripButton1.Click += new EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -139,13 +140,24 @@ namespace SM3DW_Level_Porter
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(123, 22);
             this.toolStripButton2.Text = "Random Background";
-            this.toolStripButton2.Click += new EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(251, 285);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(192, 38);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Convert to Wii U";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 349);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
@@ -177,6 +189,7 @@ namespace SM3DW_Level_Porter
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.Button button4;
     }
 }
 

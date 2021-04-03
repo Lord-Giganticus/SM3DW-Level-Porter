@@ -23,9 +23,9 @@ namespace SM3DW_Level_Porter
     {
         public Files files;
 
-        public Dictionary<string, byte[]> WiiU_Byml_Files { get; set; }
+        public Dictionary<string, byte[]> WiiU_Files { get; set; }
 
-        public Dictionary<string, byte[]> Switch_Byml_Files { get; set; }
+        public Dictionary<string, byte[]> Switch_Files { get; set; }
 
         public SarcData Switch_Data { get; set; }
 
@@ -57,14 +57,11 @@ namespace SM3DW_Level_Porter
                     var data = YAZ0.Decompress(item).LoadAsSarcData();
                     foreach (var items in data.GetSarcFiles())
                     {
-                        if (items.Key.EndsWith(".byml"))
-                        {
-                            listView1.Items.Add(items.Key);
-                            dict.Add(items.Key, items.Value);
-                        }
+                        listView1.Items.Add(items.Key);
+                        dict.Add(items.Key, items.Value);
                     }
                 }
-                WiiU_Byml_Files = dict;
+                WiiU_Files = dict;
             }
         }
 
@@ -90,7 +87,7 @@ namespace SM3DW_Level_Porter
                     dict.Add(item.Key, item.Value);
                     listView2.Items.Add(item.Key);
                 }
-                Switch_Byml_Files = dict;
+                Switch_Files = dict;
                 Switch_Data = data;
                 Switch_File = new FileInfo(open.FileName);
             }
@@ -98,46 +95,8 @@ namespace SM3DW_Level_Porter
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var WiiU_dict = new Dictionary<string, byte[]>();
-            foreach (var item in WiiU_Byml_Files)
-            {
-                File.WriteAllBytes(item.Key, item.Value);
-                var Data = new FileInfo(item.Key);
-                var data = Data.GetBymlFileData();
-                data.byteOrder = data.byteOrder.SwitchByteOrder();
-                WiiU_dict.Add(item.Key, data.GetBytes());
-                File.Delete(item.Key);
-            }
-            var Switch_dict = new Dictionary<string, byte[]>();
-            foreach (var item in Switch_Byml_Files)
-            {
-                foreach (var i in WiiU_dict)
-                {
-                    if (item.Key == i.Key)
-                    {
-                        Switch_dict.Add(item.Key, i.Value);
-                    } else
-                    {
-                        Switch_dict.Add(item.Key, item.Value);
-                    }
-                }
-            }
-            Switch_Data.endianness = ByteOrder.LittleEndian;
-            Switch_Data.Files = Switch_dict;
-            var pack_data = Switch_Data.PackSarcData().GetBytes();
-            var encoded_data = YAZ0.Compress(pack_data);
-            SaveFileDialog save = new SaveFileDialog
-            {
-                InitialDirectory = Path.GetDirectoryName(Switch_File.FullName),
-                Filter = "New Converted Stage (*."+Switch_File.Extension+")|"+Switch_File.Extension,
-                FilterIndex = 1,
-                CheckPathExists = true
-            };
-            if (save.ShowDialog().IsResult(DialogResult.OK))
-            {
-                File.WriteAllBytes(save.FileName, encoded_data);
-                MessageBox.Show("Complete!");
-            }
+            MessageBox.Show("In Development! ;)");
+            return;
         }
 
 
@@ -161,6 +120,12 @@ namespace SM3DW_Level_Porter
             Colors colors = new Colors();
             BackColor = colors.GetRandomColor();
             toolStrip1.BackColor = BackColor;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("In Development! ;)");
+            return;
         }
     }
 }

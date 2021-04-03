@@ -38,7 +38,7 @@ namespace SM3DW_Level_Porter.Ext
                 ByteOrder = reader.ByteOrder.FlipByteOrder()
             };
         }
-
+        [Obsolete("This WILL cause a error!")]
         public static BinaryDataWriter ToWriter(this BinaryDataReader reader)
         {
             return new BinaryDataWriter(reader.BaseStream);
@@ -51,7 +51,7 @@ namespace SM3DW_Level_Porter.Ext
                 ByteOrder = writer.ByteOrder.FlipByteOrder()
             };
         }
-
+        [Obsolete("Likely will cause a error.")]
         public static BinaryDataReader ToReader(this BinaryDataWriter writer)
         {
             return new BinaryDataReader(writer.BaseStream);
@@ -59,8 +59,9 @@ namespace SM3DW_Level_Porter.Ext
 
         public static void WriteToFile(this Stream stream, string path)
         {
-            using var file = File.Create(path);
-            stream.CopyTo(file);
+            var data = stream.ReadBytes(int.Parse(stream.Length.ToString()));
+            stream.Dispose();
+            File.WriteAllBytes(path, data);
         }
 
         public static bool IsByteOrder(this ByteOrder order, ByteOrder byteOrder)
