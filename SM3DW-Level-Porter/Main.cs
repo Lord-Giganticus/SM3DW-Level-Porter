@@ -27,11 +27,11 @@ namespace SM3DW_Level_Porter
 
         public Dictionary<string, byte[]> Switch_Files { get; set; }
 
-        public SarcData Switch_Data { get; set; }
+        public List<bool> Hashs { get; set; }
+
+        public bool Hash { get; set; }
 
         public FileInfo Switch_File { get; set; }
-
-        public List<bool> Hashs { get; set; }
 
         public Main()
         {
@@ -93,7 +93,7 @@ namespace SM3DW_Level_Porter
                     listView2.Items.Add(item.Key);
                 }
                 Switch_Files = dict;
-                Switch_Data = data;
+                Hash = data.HashOnly;
                 Switch_File = new FileInfo(open.FileName);
             }
         }
@@ -172,8 +172,75 @@ namespace SM3DW_Level_Porter
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("In Development! ;)");
-            return;
+            var Map_Data = new Dictionary<string, byte[]>();
+            var Sound_Data = new Dictionary<string, byte[]>();
+            var new_dict = new Dictionary<string, byte[]>();
+            foreach (var item in Switch_Files)
+            {
+                if (!item.Key.EndsWith(".byml"))
+                {
+                    var m = new MemoryStream();
+                    m.Write(item.Value, 0, item.Value.Length);
+                    var b = m.ReadStream();
+                    b.ByteOrder = ByteOrder.BigEndian;
+                    var data = b.ReadBytes(item.Value.Length);
+                    b.Dispose();
+                    new_dict.Add(item.Key, data);
+                }
+                else
+                {
+                    File.WriteAllBytes(item.Key, item.Value);
+                    var f = new FileInfo(item.Key);
+                    var d = f.GetBymlFileData();
+                    d.byteOrder = ByteOrder.BigEndian;
+                    var data = d.GetBytes();
+                    File.Delete(f.Name);
+                    if (f.Name.Contains(Names.Camera) || f.Name.Contains(Names.Map))
+                    {
+                        Map_Data.Add(item.Key, data);
+                    } else if (f.Name.Contains(Names.Sound))
+                    {
+                        Sound_Data.Add(item.Key, data);
+                    } else
+                    {
+                        new_dict.Add(item.Key, data);
+                    }
+                }
+            }
+            var Design = new SarcData
+            {
+                HashOnly = Hash,
+                Files = new_dict,
+                endianness = ByteOrder.BigEndian
+            };
+            var Sound = new SarcData
+            {
+                HashOnly = Hash,
+                Files = Sound_Data,
+                endianness = ByteOrder.BigEndian
+            };
+            var Map = new SarcData
+            {
+                HashOnly = Hash,
+                Files = Map_Data,
+                endianness = ByteOrder.BigEndian
+            };
+            var Name = Switch_File.Name.Substring(0, Switch_File.Name.Length - 7);
+            FolderBrowserDialog folder = new FolderBrowserDialog
+            {
+                UseDescriptionForTitle = true,
+                Description = "Select a folder to save the new Stage to.",
+                RootFolder = Environment.SpecialFolder.Recent,
+                ShowNewFolderButton = true
+            };
+            if (folder.ShowDialog().IsResult(DialogResult.OK))
+            {
+                Directory.SetCurrentDirectory(folder.SelectedPath);
+                File.WriteAllBytes(Name + "Design1.szs", YAZ0.Compress(Design.PackSarcData().GetBytes()));
+                File.WriteAllBytes(Name + "Sound1.szs", YAZ0.Compress(Sound.PackSarcData().GetBytes()));
+                File.WriteAllBytes(Name + "Map1.szs", YAZ0.Compress(Map.PackSarcData().GetBytes()));
+                MessageBox.Show("Complete!");
+            }
         }
     }
 }
