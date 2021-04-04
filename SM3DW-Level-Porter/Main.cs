@@ -227,7 +227,7 @@ namespace SM3DW_Level_Porter
                 Files = Map_Data,
                 endianness = ByteOrder.BigEndian
             };
-            var Name = Switch_File.Name.Substring(0, Switch_File.Name.Length - 7);
+            var Name = Switch_File.Name.Substring(0, Switch_File.Name.Length - 4);
             FolderBrowserDialog folder = new FolderBrowserDialog
             {
                 UseDescriptionForTitle = true,
