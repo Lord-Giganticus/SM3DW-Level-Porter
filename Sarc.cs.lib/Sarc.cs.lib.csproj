@@ -13,6 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="EditorCoreCommon">
+      <HintPath>..\Lib\EditorCoreCommon.dll</HintPath>
+    </Reference>
     <Reference Include="SARCExt">
       <HintPath>..\Lib\SARCExt.dll</HintPath>
     </Reference>

@@ -31,6 +31,8 @@ namespace SM3DW_Level_Porter
 
         public FileInfo Switch_File { get; set; }
 
+        public List<bool> Hashs { get; set; }
+
         public Main()
         {
             InitializeComponent();
@@ -52,6 +54,7 @@ namespace SM3DW_Level_Porter
             if (open.ShowDialog().IsResult(DialogResult.OK))
             {
                 var dict = new Dictionary<string, byte[]>();
+                var hashes = new List<bool>();
                 foreach (var item in open.FileNames)
                 {
                     var data = YAZ0.Decompress(item).LoadAsSarcData();
@@ -60,8 +63,10 @@ namespace SM3DW_Level_Porter
                         listView1.Items.Add(items.Key);
                         dict.Add(items.Key, items.Value);
                     }
+                    hashes.Add(data.HashOnly);
                 }
                 WiiU_Files = dict;
+                Hashs = hashes;
             }
         }
 
@@ -95,8 +100,51 @@ namespace SM3DW_Level_Porter
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("In Development! ;)");
-            return;
+            var new_dict = new Dictionary<string, byte[]>();
+            foreach (var item in WiiU_Files)
+            {
+                if (!item.Key.EndsWith(".byml"))
+                {
+                    var m = new MemoryStream();
+                    m.Write(item.Value, 0, item.Value.Length);
+                    var b = m.ReadStream();
+                    b.ByteOrder = ByteOrder.LittleEndian;
+                    var data = b.ReadBytes(item.Value.Length);
+                    b.Dispose();
+                    new_dict.Add(item.Key, data);
+                } else
+                {
+                    File.WriteAllBytes(item.Key, item.Value);
+                    var f = new FileInfo(item.Key);
+                    var d = f.GetBymlFileData();
+                    d.byteOrder = ByteOrder.LittleEndian;
+                    var data = d.GetBytes();
+                    File.Delete(f.Name);
+                    new_dict.Add(item.Key, data);
+                }
+            }
+            var Data = new SarcData
+            {
+                HashOnly = Hashs[0],
+                Files = new_dict,
+                endianness = ByteOrder.LittleEndian
+            };
+            var src = YAZ0.Compress(Data.PackSarcData().GetBytes());
+            SaveFileDialog save = new SaveFileDialog
+            {
+                Filter = "Szs files (*.szs)|*.szs|All files (*.*)|*.*",
+                FilterIndex = 1,
+                Title = "Save the new Stage.",
+                DefaultExt = ".szs",
+                CheckPathExists = true,
+                InitialDirectory = Directory.GetCurrentDirectory(),
+                OverwritePrompt = true
+            };
+            if (save.ShowDialog().IsResult(DialogResult.OK))
+            {
+                File.WriteAllBytes(save.FileName, src);
+                MessageBox.Show("Complete!");
+            }
         }
 
 
