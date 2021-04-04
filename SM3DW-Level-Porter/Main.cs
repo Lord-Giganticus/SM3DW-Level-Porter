@@ -111,6 +111,7 @@ namespace SM3DW_Level_Porter
                     b.ByteOrder = ByteOrder.LittleEndian;
                     var data = b.ReadBytes(item.Value.Length);
                     b.Dispose();
+                    m.Dispose();
                     new_dict.Add(item.Key, data);
                 } else
                 {
@@ -185,6 +186,7 @@ namespace SM3DW_Level_Porter
                     b.ByteOrder = ByteOrder.BigEndian;
                     var data = b.ReadBytes(item.Value.Length);
                     b.Dispose();
+                    m.Dispose();
                     new_dict.Add(item.Key, data);
                 }
                 else
