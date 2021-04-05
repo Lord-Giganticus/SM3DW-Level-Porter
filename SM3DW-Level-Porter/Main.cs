@@ -16,6 +16,7 @@ using SARCExt;
 using Byml.cs.lib.Ext;
 using Syroot.BinaryData;
 using SM3DW_Level_Porter.Classes;
+using BYAML;
 
 namespace SM3DW_Level_Porter
 {
@@ -32,6 +33,8 @@ namespace SM3DW_Level_Porter
         public bool Hash { get; set; }
 
         public FileInfo Switch_File { get; set; }
+
+        public FileInfo WiiU_File { get; set; }
 
         public Main()
         {
@@ -65,6 +68,7 @@ namespace SM3DW_Level_Porter
                     }
                     hashes.Add(data.HashOnly);
                 }
+                WiiU_File = new FileInfo(open.FileNames[0]);
                 WiiU_Files = dict;
                 Hashs = hashes;
             }
@@ -115,12 +119,11 @@ namespace SM3DW_Level_Porter
                     new_dict.Add(item.Key, data);
                 } else
                 {
-                    File.WriteAllBytes(item.Key, item.Value);
-                    var f = new FileInfo(item.Key);
-                    var d = f.GetBymlFileData();
+                    var m = new MemoryStream(item.Value);
+                    var d = m.GetByml();
                     d.byteOrder = ByteOrder.LittleEndian;
                     var data = d.GetBytes();
-                    File.Delete(f.Name);
+                    m.Dispose();
                     new_dict.Add(item.Key, data);
                 }
             }
@@ -130,6 +133,7 @@ namespace SM3DW_Level_Porter
                 Files = new_dict,
                 endianness = ByteOrder.LittleEndian
             };
+            var name = WiiU_File.Name.Substring(0, WiiU_File.Name.Length - 5);
             var src = YAZ0.Compress(Data.PackSarcData().GetBytes());
             SaveFileDialog save = new SaveFileDialog
             {
@@ -139,7 +143,8 @@ namespace SM3DW_Level_Porter
                 DefaultExt = ".szs",
                 CheckPathExists = true,
                 InitialDirectory = Directory.GetCurrentDirectory(),
-                OverwritePrompt = true
+                OverwritePrompt = true,
+                FileName = name
             };
             if (save.ShowDialog().IsResult(DialogResult.OK))
             {
@@ -191,12 +196,12 @@ namespace SM3DW_Level_Porter
                 }
                 else
                 {
-                    File.WriteAllBytes(item.Key, item.Value);
                     var f = new FileInfo(item.Key);
-                    var d = f.GetBymlFileData();
+                    var m = new MemoryStream(item.Value);
+                    var d = m.GetByml();
                     d.byteOrder = ByteOrder.BigEndian;
                     var data = d.GetBytes();
-                    File.Delete(f.Name);
+                    m.Dispose();
                     if (f.Name.Contains(Names.Camera) || f.Name.Contains(Names.Map))
                     {
                         Map_Data.Add(item.Key, data);

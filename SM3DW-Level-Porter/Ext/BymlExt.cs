@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace SM3DW_Level_Porter.Ext
 {
     public static class BymlExt
     {
+        public static ByamlFile ByamlFile;
+
         public static BymlFileData SwitchEndianness(this BymlFileData data)
         {
             return new BymlFileData
@@ -19,6 +22,11 @@ namespace SM3DW_Level_Porter.Ext
                 SupportPaths = data.SupportPaths,
                 Version = data.Version
             };
+        }
+
+        public static BymlFileData GetByml(this Stream stream)
+        {
+            return ByamlFile.LoadN(stream);
         }
     }
 }
