@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syroot.Maths" Version="1.5.3" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ByamlExt">
+      <HintPath>..\Lib\ByamlExt.dll</HintPath>
+    </Reference>
+    <Reference Include="EditorCoreCommon">
+      <HintPath>..\Lib\EditorCoreCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="FirstPlugin.Plg">
+      <HintPath>..\Lib\FirstPlugin.Plg.dll</HintPath>
+    </Reference>
+    <Reference Include="SARCExt">
+      <HintPath>..\Lib\SARCExt.dll</HintPath>
+    </Reference>
+    <Reference Include="Syroot.BinaryData">
+      <HintPath>..\Lib\Syroot.BinaryData.dll</HintPath>
+    </Reference>
+    <Reference Include="Toolbox.Library">
+      <HintPath>..\Lib\Toolbox.Library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
