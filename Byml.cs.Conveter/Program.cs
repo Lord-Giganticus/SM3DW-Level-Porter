@@ -21,6 +21,7 @@ namespace Byml.cs.Conveter
                         var m = new MemoryStream(b);
                         var byml = m.GetByml();
                         var y = YamlByamlConverter.ToYaml(byml);
+                        Directory.SetCurrentDirectory(f.DirectoryName);
                         using var s = new StreamWriter(f.Name + ".yml");
                         s.Write(y);
                         s.Close();
@@ -28,6 +29,7 @@ namespace Byml.cs.Conveter
                     {
                         var y = YamlByamlConverter.FromYaml(f.FullName);
                         var b = ByamlFile.SaveN(y);
+                        Directory.SetCurrentDirectory(f.DirectoryName);
                         File.WriteAllBytes(f.Name + ".byml" , b);
                     }
                 }
@@ -44,6 +46,7 @@ namespace Byml.cs.Conveter
                         var m = new MemoryStream(b);
                         var byml = m.GetByml();
                         var y = YamlByamlConverter.ToYaml(byml);
+                        Directory.SetCurrentDirectory(f.DirectoryName);
                         using var s = new StreamWriter(f.Name + ".yml");
                         s.Write(y);
                         s.Close();
@@ -52,6 +55,7 @@ namespace Byml.cs.Conveter
                     {
                         var y = YamlByamlConverter.FromYaml(f.FullName);
                         var b = ByamlFile.SaveN(y);
+                        Directory.SetCurrentDirectory(f.DirectoryName);
                         File.WriteAllBytes(f.Name + ".byml", b);
                     }
                 } else
