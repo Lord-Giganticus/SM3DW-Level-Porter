@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SM3DW-Level-Porter", "SM3DW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byml.cs.Conveter", "Byml.cs.Conveter\Byml.cs.Conveter.csproj", "{30809E3F-7B16-494A-B784-5773F1FBDCDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sarc.cs.CLI", "Sarc.cs.CLI\Sarc.cs.CLI.csproj", "{53B0C5FF-31A4-4E55-862F-3E1D4AA7256A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{30809E3F-7B16-494A-B784-5773F1FBDCDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30809E3F-7B16-494A-B784-5773F1FBDCDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30809E3F-7B16-494A-B784-5773F1FBDCDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53B0C5FF-31A4-4E55-862F-3E1D4AA7256A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53B0C5FF-31A4-4E55-862F-3E1D4AA7256A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53B0C5FF-31A4-4E55-862F-3E1D4AA7256A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53B0C5FF-31A4-4E55-862F-3E1D4AA7256A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{36EB917E-2028-4965-B294-F0CDEDF0C045} = {2A81F4EF-11E9-461F-94E2-AC5F0E709938}
 		{E9BED1AB-AD11-41E4-A86C-2403366D53A9} = {789B7C95-94BD-4831-98A1-1DFD8DD4AB31}
 		{30809E3F-7B16-494A-B784-5773F1FBDCDF} = {789B7C95-94BD-4831-98A1-1DFD8DD4AB31}
+		{53B0C5FF-31A4-4E55-862F-3E1D4AA7256A} = {2A81F4EF-11E9-461F-94E2-AC5F0E709938}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {174D1BD2-0502-4484-965C-1BCADD63BF52}
