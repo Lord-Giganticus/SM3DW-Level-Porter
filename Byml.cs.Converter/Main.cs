@@ -36,7 +36,7 @@ namespace Byml.cs.Converter
                         var m = new MemoryStream(b);
                         var byml = m.GetByml();
                         var y = byml.ToYaml();
-                        Directory.SetCurrentDirectory(f.DirectoryName);
+                        Directory.SetCurrentDirectory(f.Directory.FullName);
                         using var s = new StreamWriter(f.Name + ".yml");
                         s.Write(y);
                         s.Close();
@@ -45,7 +45,7 @@ namespace Byml.cs.Converter
                     {
                         var y = f.FullName.FromYaml();
                         var b = ByamlFile.SaveN(y);
-                        Directory.SetCurrentDirectory(f.DirectoryName);
+                        Directory.SetCurrentDirectory(f.Directory.FullName);
                         File.WriteAllBytes(f.Name + ".byml", b);
                     }
                 }

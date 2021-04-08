@@ -21,7 +21,7 @@ namespace Sarc.cs.CLI
                         var d = f.FullName.ReadBytes().DecompressToSarcData();
                         var b = d.endianness.ToString();
                         var h = d.HashOnly.ToString();
-                        Directory.SetCurrentDirectory(f.DirectoryName);
+                        Directory.SetCurrentDirectory(f.Directory.FullName);
                         foreach (var i in d.Files)
                         {
                             File.WriteAllBytes(i.Key, i.Value);
