@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sarc.cs.GUI.Ext
+﻿namespace Sarc.cs.GUI.Ext
 {
     public static class String
     {

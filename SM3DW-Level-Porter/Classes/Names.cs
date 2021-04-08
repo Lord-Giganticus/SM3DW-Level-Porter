@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SM3DW_Level_Porter.Classes
+﻿namespace SM3DW_Level_Porter.Classes
 {
     public static class Names
     {

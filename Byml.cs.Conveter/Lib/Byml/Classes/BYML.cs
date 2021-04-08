@@ -5,8 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Syroot.BinaryData;
-using System.Diagnostics;
-using System.Text.Encodings;
 using Syroot.Maths;
 
 namespace BYAML

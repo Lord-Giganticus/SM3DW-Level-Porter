@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Sarc.cs.lib.Ext;
 using SM3DW_Level_Porter.Ext;
 using System.Collections.Generic;

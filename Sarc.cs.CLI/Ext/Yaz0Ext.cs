@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SZS;
+﻿using SZS;
 using Sarc.cs.lib.Ext;
 using SARCExt;
-using SM3DW_Level_Porter.Ext;
 
 
 namespace SM3DW_Level_Porter.Ext

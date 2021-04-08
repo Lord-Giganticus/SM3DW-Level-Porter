@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using SARCExt;
-using Syroot.BinaryData;
 using Sarc.cs.lib.Ext;
 
 namespace Sarc.cs.lib.Classes

@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using SM3DW_Level_Porter.Ext;
@@ -16,7 +13,6 @@ using SARCExt;
 using Byml.cs.lib.Ext;
 using Syroot.BinaryData;
 using SM3DW_Level_Porter.Classes;
-using BYAML;
 
 namespace SM3DW_Level_Porter
 {
