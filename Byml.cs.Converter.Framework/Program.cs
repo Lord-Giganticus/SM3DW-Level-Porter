@@ -42,6 +42,33 @@ namespace Byml.cs.Converter.Framework
                         File.WriteAllBytes(n + ".byml", b);
                     }
                 }
+            } else
+            {
+                Console.WriteLine("Enter a file here.");
+                var R = Console.ReadLine();
+                var f = new FileInfo(R);
+                if (f.Exists)
+                {
+                    if (f.Extension == ".byml")
+                    {
+                        var b = File.ReadAllBytes(f.FullName);
+                        var m = new MemoryStream(b);
+                        var byml = m.GetByml();
+                        var y = byml.ToYaml();
+                        Directory.SetCurrentDirectory(f.Directory.FullName);
+                        var n = Path.GetFileNameWithoutExtension(f.FullName);
+                        var s = new StreamWriter(n + ".yml");
+                        s.Write(y);
+                        s.Close();
+                    } else if (f.Extension == ".yml")
+                    {
+                        var y = f.FullName.FromYaml();
+                        var b = ByamlFile.SaveN(y);
+                        Directory.SetCurrentDirectory(f.Directory.FullName);
+                        var n = Path.GetFileNameWithoutExtension(f.FullName);
+                        File.WriteAllBytes(n + ".byml", b);
+                    }
+                }
             }
         }
     }

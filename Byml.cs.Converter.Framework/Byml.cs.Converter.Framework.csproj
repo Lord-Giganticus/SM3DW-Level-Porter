@@ -82,6 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Yaml.cs" />
     <Compile Include="Ext\BinaryDataExt.cs" />
     <Compile Include="Ext\BymlExt.cs" />
     <Compile Include="Ext\StreamExt\StreamExtensions_Bytes.cs" />

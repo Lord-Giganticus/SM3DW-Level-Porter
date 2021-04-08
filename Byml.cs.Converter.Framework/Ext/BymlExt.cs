@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using ByamlExt.Byaml;
 using FirstPlugin;
+using Byml.cs.Converter.Framework.Classes;
 
 namespace SM3DW_Level_Porter.Ext
 {
@@ -20,7 +21,7 @@ namespace SM3DW_Level_Porter.Ext
 
         public static BymlFileData FromYaml(this string String)
         {
-            return YamlByamlConverter.FromYaml(String);
+            return Yaml.FromYaml(String);
         }
     }
 }
