@@ -1,4 +1,4 @@
-using ByamlExt.Byaml;
+﻿using ByamlExt.Byaml;
 using SM3DW_Level_Porter.Ext;
 using System;
 using System.Collections.Generic;
@@ -7,19 +7,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Byml.cs.Converter
+namespace Byml.cs.Converter.Framework
 {
     static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// The main entry point for the application.
         /// </summary>
-        [STAThread]
         static void Main(string[] args)
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             if (args.Length > 0)
             {
                 foreach (var arg in args)
@@ -33,7 +29,7 @@ namespace Byml.cs.Converter
                         var y = byml.ToYaml();
                         Directory.SetCurrentDirectory(f.Directory.FullName);
                         var n = Path.GetFileNameWithoutExtension(f.FullName);
-                        using var s = new StreamWriter(n + ".yml");
+                        var s = new StreamWriter(n + ".yml");
                         s.Write(y);
                         s.Close();
                     }

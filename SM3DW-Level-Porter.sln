@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sarc.cs.CLI", "Sarc.cs.CLI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byml.cs.Converter", "Byml.cs.Converter\Byml.cs.Converter.csproj", "{AD3BBE76-C47A-4FCA-A9FD-1F8059CB03FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byml.cs.Converter.Framework", "Byml.cs.Converter.Framework\Byml.cs.Converter.Framework.csproj", "{98183F19-0F42-4EFF-9CF7-65EC3521661D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{AD3BBE76-C47A-4FCA-A9FD-1F8059CB03FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD3BBE76-C47A-4FCA-A9FD-1F8059CB03FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD3BBE76-C47A-4FCA-A9FD-1F8059CB03FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98183F19-0F42-4EFF-9CF7-65EC3521661D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98183F19-0F42-4EFF-9CF7-65EC3521661D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98183F19-0F42-4EFF-9CF7-65EC3521661D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98183F19-0F42-4EFF-9CF7-65EC3521661D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{E9BED1AB-AD11-41E4-A86C-2403366D53A9} = {789B7C95-94BD-4831-98A1-1DFD8DD4AB31}
 		{53B0C5FF-31A4-4E55-862F-3E1D4AA7256A} = {2A81F4EF-11E9-461F-94E2-AC5F0E709938}
 		{AD3BBE76-C47A-4FCA-A9FD-1F8059CB03FF} = {789B7C95-94BD-4831-98A1-1DFD8DD4AB31}
+		{98183F19-0F42-4EFF-9CF7-65EC3521661D} = {789B7C95-94BD-4831-98A1-1DFD8DD4AB31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {174D1BD2-0502-4484-965C-1BCADD63BF52}
