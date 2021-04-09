@@ -22,6 +22,8 @@ namespace Sarc.cs.CLI
                         var b = d.endianness.ToString();
                         var h = d.HashOnly.ToString();
                         Directory.SetCurrentDirectory(f.Directory.FullName);
+                        Directory.CreateDirectory(Path.GetFileNameWithoutExtension(f.FullName));
+                        Directory.SetCurrentDirectory(Path.GetFileNameWithoutExtension(f.FullName));
                         foreach (var i in d.Files)
                         {
                             File.WriteAllBytes(i.Key, i.Value);
@@ -36,9 +38,13 @@ namespace Sarc.cs.CLI
                     {
                         var Dict = new Dictionary<string, byte[]>();
                         var d = new DirectoryInfo(arg);
+                        Directory.SetCurrentDirectory(d.FullName);
                         foreach (var f in d.GetFiles())
                         {
-                            Dict.Add(f.Name, f.FullName.ReadBytes());
+                            if (f.Extension != ".txt")
+                            {
+                                Dict.Add(f.Name, f.FullName.ReadBytes());
+                            }
                         }
                         using var r = new StreamReader("endianess.txt");
                         var l = r.ReadToEnd();
