@@ -49,9 +49,7 @@ namespace SM3DW_Level_Porter.Classes
 
         private Color GetRandomColor(List<Color> list)
         {
-            Random rnd = new Random();
-            int r = rnd.Next(list.Count);
-            return list[r];
+            return list.RandItem();
         }
 
         public Color GetRandomColor()
