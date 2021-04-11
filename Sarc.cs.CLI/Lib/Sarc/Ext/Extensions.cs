@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using SARCExt;
 using Syroot.BinaryData;
+using System.Linq;
 
 namespace Sarc.cs.lib.Ext
 {
@@ -135,7 +136,7 @@ namespace Sarc.cs.lib.Ext
             }
         }
 
-        public static byte[] GetBytes(this Tuple<int,byte[]> tuple)
+        public static byte[] GetBytes<T>(this Tuple<T,byte[]> tuple) where T : notnull
         {
             return tuple.Item2;
         }
@@ -167,6 +168,13 @@ namespace Sarc.cs.lib.Ext
             {
                 return false;
             }
+        }
+
+        public static KeyValuePair<T1,T2> GetRandPair<T1,T2>(this Dictionary<T1,T2> dict)
+        {
+            Random rnd = new Random();
+            int r = rnd.Next(dict.Count);
+            return dict.ElementAt(r);
         }
     }
 }
