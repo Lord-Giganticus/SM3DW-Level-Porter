@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Byml.cs.Converter", "Byml.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Byml.cs.Converter.Framework", "Byml.cs.Converter.Framework\Byml.cs.Converter.Framework.csproj", "{98183F19-0F42-4EFF-9CF7-65EC3521661D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SM3DW-Level-Porter.Lib", "SM3DW-Level-Porter.Lib\SM3DW-Level-Porter.Lib.csproj", "{2B9F45B5-6D77-4761-BD5E-35CB1910CD50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{98183F19-0F42-4EFF-9CF7-65EC3521661D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98183F19-0F42-4EFF-9CF7-65EC3521661D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98183F19-0F42-4EFF-9CF7-65EC3521661D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B9F45B5-6D77-4761-BD5E-35CB1910CD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B9F45B5-6D77-4761-BD5E-35CB1910CD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B9F45B5-6D77-4761-BD5E-35CB1910CD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B9F45B5-6D77-4761-BD5E-35CB1910CD50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
