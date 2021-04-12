@@ -6,6 +6,8 @@
     <RootNamespace>SM3DW_Level_Porter.Lib</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<Authors>Lord-Giganticus</Authors>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
