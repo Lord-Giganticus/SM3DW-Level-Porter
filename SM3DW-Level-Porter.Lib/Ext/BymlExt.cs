@@ -29,5 +29,10 @@ namespace SM3DW_Level_Porter.Ext
         {
             File.WriteAllBytes(path, data.GetBytes());
         }
+
+        public static async void SaveBymlAsync(this BymlFileData data, string path)
+        {
+            await File.WriteAllBytesAsync(path, data.GetBytes());
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using SARCExt;
 using Syroot.BinaryData;
+using SM3DW_Level_Porter.Ext;
 
 namespace Sarc.cs.lib.Ext
 {
@@ -116,39 +117,22 @@ namespace Sarc.cs.lib.Ext
 
         public static void SaveSarc(this Tuple<int,byte[]> tuple, string file)
         {
-            if (!File.Exists(file))
-            {
-                File.WriteAllBytes(file, tuple.Item2);
-            } else
-            {
-                throw new IOException("File Already Exists.");
-            }
+            File.WriteAllBytes(file, tuple.GetBytes());
         }
 
         public static void SaveSarc(this byte[] bytes, string file)
         {
-            if (!File.Exists(file))
-            {
-                File.WriteAllBytes(file, bytes);
-            } else
-            {
-                throw new IOException("File Already Exists.");
-            }
+            File.WriteAllBytes(file, bytes);
         }
 
-        public static byte[] GetBytes(this Tuple<int,byte[]> tuple)
+        public static byte[] GetBytes<T>(this Tuple<T,byte[]> tuple)
         {
             return tuple.Item2;
         }
 
-        public static List<SarcData> ToList(this SarcData[] datas)
+        public static List<SarcData> Tolist(this SarcData[] datas)
         {
-            var list = new List<SarcData>();
-            foreach (var data in datas)
-            {
-                list.Add(data);
-            }
-            return list;
+            return datas.ToList();
         }
 
         public static void ExtractFiles(this Dictionary<string, byte[]> dict)

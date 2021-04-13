@@ -69,7 +69,7 @@ namespace SM3DW_Level_Porter.Ext
         {
             var data = await stream.ReadAllBytesAsync();
             await stream.DisposeAsync();
-            File.WriteAllBytes(path, data);
+            await File.WriteAllBytesAsync(path, data);
         }
 
         public static bool IsByteOrder(this ByteOrder order, ByteOrder byteOrder)
