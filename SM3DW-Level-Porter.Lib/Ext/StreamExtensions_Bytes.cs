@@ -71,6 +71,17 @@ namespace Syroot.BinaryData
             return result;
         }
 
+        /// <summary>
+        /// Returns all <see cref="Byte"/> values read from the stream in one call.
+        /// </summary>
+        /// <typeparam name="T">The type of the extended <see cref="Stream"/> instance.</typeparam>
+        /// <param name="stream">The extended <see cref="Stream"/> instance.</param>
+        /// <returns>The read values.</returns>
+        public static byte[] ReadAllBytes<T>(this T stream) where T : Stream
+        {
+            return stream.ReadBytes(int.Parse(stream.Length.ToString()));
+        }
+
         // ---- Read Async ----
 
         /// <summary>
@@ -86,6 +97,18 @@ namespace Syroot.BinaryData
         {
             byte[] result = new byte[count];
             await stream.ReadAsync(result, 0, result.Length, ct);
+            return result;
+        }
+
+        /// <summary>
+        /// Returns <see cref="byte"/> values read asynchronously from the stream in one call.
+        /// </summary>
+        /// <typeparam name="T">The type of the extended <see cref="Stream"/> instance.</typeparam>
+        /// <param name="stream">The extended <see cref="Stream"/> instance.</param>
+        /// <returns>The read values.</returns>
+        public static async Task<byte[]> ReadAllBytesAsync<T>(this T stream) where T : Stream
+        { 
+            var result = await stream.ReadBytesAsync(int.Parse(stream.Length.ToString()));
             return result;
         }
 

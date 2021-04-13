@@ -27,7 +27,7 @@ namespace SM3DW_Level_Porter.Ext
             return File.OpenRead(file.FullName);
         }
 
-        public static BinaryDataReader ReadStream(this Stream stream)
+        public static BinaryDataReader ReadStream<T>(this T stream) where T : Stream
         {
             return new BinaryDataReader(stream);
         }
@@ -52,16 +52,23 @@ namespace SM3DW_Level_Porter.Ext
                 ByteOrder = writer.ByteOrder.FlipByteOrder()
             };
         }
-        [Obsolete("Likely will cause a error.")]
+        [Obsolete("This WILL cause a error!")]
         public static BinaryDataReader ToReader(this BinaryDataWriter writer)
         {
             return new BinaryDataReader(writer.BaseStream);
         }
 
-        public static void WriteToFile(this Stream stream, string path)
+        public static void WriteToFile<T>(this T stream, string path) where T : Stream
         {
-            var data = stream.ReadBytes(int.Parse(stream.Length.ToString()));
+            var data = stream.ReadAllBytes();
             stream.Dispose();
+            File.WriteAllBytes(path, data);
+        }
+
+        public static async void WriteToFileAsync<T>(this T stream, string path) where T : Stream
+        {
+            var data = await stream.ReadAllBytesAsync();
+            await stream.DisposeAsync();
             File.WriteAllBytes(path, data);
         }
 
@@ -74,6 +81,16 @@ namespace SM3DW_Level_Porter.Ext
             {
                 return false;
             }
+        }
+
+        public static ByteOrder ToByteOrder(this FileInfo info)
+        {
+            return info.ReadFileAsStream().ReadStream().ByteOrder;
+        }
+
+        public static ByteOrder ToByteOrder<T>(this T stream) where T : Stream
+        {
+            return stream.ReadStream().ByteOrder;
         }
     }
 }

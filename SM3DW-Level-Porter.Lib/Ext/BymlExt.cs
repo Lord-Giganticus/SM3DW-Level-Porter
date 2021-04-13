@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using BYAML;
 using Byml.cs.lib.Ext;
 
@@ -19,9 +20,14 @@ namespace SM3DW_Level_Porter.Ext
             };
         }
 
-        public static BymlFileData GetByml(this Stream stream)
+        public static BymlFileData GetByml<T>(this T stream) where T : Stream
         {
             return ByamlFile.LoadN(stream);
+        }
+
+        public static void SaveByml(this BymlFileData data, string path)
+        {
+            File.WriteAllBytes(path, data.GetBytes());
         }
     }
 }
