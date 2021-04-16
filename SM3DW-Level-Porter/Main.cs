@@ -130,7 +130,7 @@ namespace SM3DW_Level_Porter
                 Files = new_dict,
                 endianness = ByteOrder.LittleEndian
             };
-            var name = WiiU_File.Name.Substring(0, WiiU_File.Name.Length - 5);
+            var name = WiiU_File.Name.Substring(0, WiiU_File.Name.Length - 8);
             var src = YAZ0.Compress(Data.PackSarcData().GetBytes());
             SaveFileDialog save = new SaveFileDialog
             {
