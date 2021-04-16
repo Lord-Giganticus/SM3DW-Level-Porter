@@ -80,12 +80,12 @@ namespace SM3DW_Level_Porter.Ext
             return stream.ReadStream().ByteOrder;
         }
 
-        public static byte[] GetBytes(this BinaryDataReader data)
+        public static byte[] GetBytes<T>(this T data) where T : BinaryReader
         {
             return data.BaseStream.GetBytes();
         }
 
-        public async static Task<byte[]> GetBytesAsync(this BinaryDataReader data)
+        public async static Task<byte[]> GetBytesAsync<T>(this T data) where T : BinaryReader
         {
             return await data.BaseStream.GetBytesAsync();
         }
