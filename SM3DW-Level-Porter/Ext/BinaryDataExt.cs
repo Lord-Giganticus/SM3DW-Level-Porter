@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Syroot.BinaryData;
 
 namespace SM3DW_Level_Porter.Ext
@@ -27,7 +28,7 @@ namespace SM3DW_Level_Porter.Ext
             return File.OpenRead(file.FullName);
         }
 
-        public static BinaryDataReader ReadStream(this Stream stream)
+        public static BinaryDataReader ReadStream<T>(this T stream) where T : Stream
         {
             return new BinaryDataReader(stream);
         }
@@ -52,17 +53,10 @@ namespace SM3DW_Level_Porter.Ext
                 ByteOrder = writer.ByteOrder.FlipByteOrder()
             };
         }
-        [Obsolete("Likely will cause a error.")]
+        [Obsolete("This WILL cause a error!")]
         public static BinaryDataReader ToReader(this BinaryDataWriter writer)
         {
             return new BinaryDataReader(writer.BaseStream);
-        }
-
-        public static void WriteToFile(this Stream stream, string path)
-        {
-            var data = stream.ReadBytes(int.Parse(stream.Length.ToString()));
-            stream.Dispose();
-            File.WriteAllBytes(path, data);
         }
 
         public static bool IsByteOrder(this ByteOrder order, ByteOrder byteOrder)
@@ -74,6 +68,26 @@ namespace SM3DW_Level_Porter.Ext
             {
                 return false;
             }
+        }
+
+        public static ByteOrder ToByteOrder(this FileInfo info)
+        {
+            return info.ReadFileAsStream().ReadStream().ByteOrder;
+        }
+
+        public static ByteOrder ToByteOrder<T>(this T stream) where T : Stream
+        {
+            return stream.ReadStream().ByteOrder;
+        }
+
+        public static byte[] GetBytes(this BinaryDataReader data)
+        {
+            return data.BaseStream.GetBytes();
+        }
+
+        public async static Task<byte[]> GetBytesAsync(this BinaryDataReader data)
+        {
+            return await data.BaseStream.GetBytesAsync();
         }
     }
 }

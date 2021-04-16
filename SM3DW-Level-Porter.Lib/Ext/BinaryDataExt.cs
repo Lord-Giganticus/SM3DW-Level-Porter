@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Syroot.BinaryData;
 
 namespace SM3DW_Level_Porter.Ext
@@ -91,6 +92,16 @@ namespace SM3DW_Level_Porter.Ext
         public static ByteOrder ToByteOrder<T>(this T stream) where T : Stream
         {
             return stream.ReadStream().ByteOrder;
+        }
+
+        public static byte[] GetBytes(this BinaryDataReader data)
+        {
+            return data.BaseStream.GetBytes();
+        }
+
+        public async static Task<byte[]> GetBytesAsync(this BinaryDataReader data)
+        {
+            return await data.BaseStream.GetBytesAsync();
         }
     }
 }

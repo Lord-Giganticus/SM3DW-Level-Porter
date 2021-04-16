@@ -63,8 +63,9 @@ namespace SM3DW_Level_Porter
                         dict.Add(items.Key, items.Value);
                     }
                     hashes.Add(data.HashOnly);
+                    if (item.Contains("Map1"))
+                        WiiU_File = new FileInfo(item);
                 }
-                WiiU_File = new FileInfo(open.FileNames[0]);
                 WiiU_Files = dict;
                 Hashs = hashes;
             }
@@ -109,7 +110,7 @@ namespace SM3DW_Level_Porter
                     m.Write(item.Value, 0, item.Value.Length);
                     var b = m.ReadStream();
                     b.ByteOrder = ByteOrder.LittleEndian;
-                    var data = b.ReadBytes(item.Value.Length);
+                    var data = b.GetBytes();
                     b.Dispose();
                     m.Dispose();
                     new_dict.Add(item.Key, data);
@@ -185,7 +186,7 @@ namespace SM3DW_Level_Porter
                     m.Write(item.Value, 0, item.Value.Length);
                     var b = m.ReadStream();
                     b.ByteOrder = ByteOrder.BigEndian;
-                    var data = b.ReadBytes(item.Value.Length);
+                    var data = b.GetBytes();
                     b.Dispose();
                     m.Dispose();
                     new_dict.Add(item.Key, data);
