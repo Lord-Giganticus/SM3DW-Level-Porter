@@ -7,7 +7,6 @@ namespace SM3DW_Level_Porter.Ext
 {
     public static class BymlExt
     {
-        public static ByamlFile ByamlFile;
 
         public static BymlFileData SwitchEndianness(this BymlFileData data)
         {
@@ -20,19 +19,25 @@ namespace SM3DW_Level_Porter.Ext
             };
         }
 
-        public static BymlFileData GetByml<T>(this T stream) where T : Stream
+        public static BymlFileData GetByml(this Stream stream)
         {
             return ByamlFile.LoadN(stream);
         }
 
-        public static void SaveByml(this BymlFileData data, string path)
+        public static Task<BymlFileData> SwitchEndiannessAsync(this BymlFileData data)
         {
-            File.WriteAllBytes(path, data.GetBytes());
+            return Task.Run(() => new BymlFileData
+            {
+                byteOrder = data.byteOrder.FlipByteOrder(),
+                RootNode = data.RootNode,
+                SupportPaths = data.SupportPaths,
+                Version = data.Version
+            });
         }
 
-        public static async void SaveBymlAsync(this BymlFileData data, string path)
+        public static Task<BymlFileData> GetBymlAsync(this Stream stream)
         {
-            await File.WriteAllBytesAsync(path, data.GetBytes());
+            return Task.Run(() => ByamlFile.LoadN(stream));
         }
     }
 }

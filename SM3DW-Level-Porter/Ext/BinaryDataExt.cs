@@ -28,6 +28,11 @@ namespace SM3DW_Level_Porter.Ext
             return File.OpenRead(file.FullName);
         }
 
+        public static Task<FileStream> ReadFileAsStreamAsync(this FileInfo file)
+        {
+            return Task.Run(() => file.ReadFileAsStream());
+        }
+
         public static BinaryDataReader ReadStream<T>(this T stream) where T : Stream
         {
             return new BinaryDataReader(stream);
@@ -80,14 +85,15 @@ namespace SM3DW_Level_Porter.Ext
             return stream.ReadStream().ByteOrder;
         }
 
+
         public static byte[] GetBytes<T>(this T data) where T : BinaryReader
         {
-            return data.BaseStream.GetBytes();
+            return data.ReadBytes(data.BaseStream.Position.ToInt());
         }
 
-        public async static Task<byte[]> GetBytesAsync<T>(this T data) where T : BinaryReader
+        public static Task<byte[]> GetBytesAsync<T>(this T data) where T : BinaryReader
         {
-            return await data.BaseStream.GetBytesAsync();
+            return Task.Run(() => data.ReadBytes(data.BaseStream.Position.ToInt()));
         }
     }
 }
