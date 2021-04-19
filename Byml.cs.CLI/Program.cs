@@ -17,8 +17,6 @@ namespace Byml.cs.CLI
                         var Data = new FileInfo(arg);
                         var data = Data.GetBymlFileData();
                         data.byteOrder = data.byteOrder.SwitchByteOrder();
-                        Directory.CreateDirectory("Converted");
-                        Directory.SetCurrentDirectory("Converted");
                         data.SaveFile(Data.Name);
                     }
                 }
@@ -32,8 +30,6 @@ namespace Byml.cs.CLI
                     var Data = new FileInfo(path);
                     var data = Data.GetBymlFileData();
                     data.byteOrder = data.byteOrder.SwitchByteOrder();
-                    Directory.CreateDirectory("Converted");
-                    Directory.SetCurrentDirectory("Converted");
                     data.SaveFile(Data.Name);
                 }
             }
