@@ -2,28 +2,10 @@
 {
     public static class Names
     {
-        public static string Map
-        {
-            get
-            {
-                return "Map.byml";
-            }
-        }
+        public const string Map = "Map.byml";
 
-        public static string Camera
-        {
-            get
-            {
-                return "CameraParam.byml";
-            }
-        }
+        public const string Camera = "CameraParam.byml";
 
-        public static string Sound
-        {
-            get
-            {
-                return "Sound.byml";
-            }
-        }
+        public const string Sound = "Sound.byml";
     }
 }

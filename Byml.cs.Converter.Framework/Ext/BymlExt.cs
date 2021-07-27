@@ -7,11 +7,10 @@ namespace SM3DW_Level_Porter.Ext
 {
     public static class BymlExt
     {
-        public static ByamlFile ByamlFile;
 
         public static BymlFileData GetByml(this Stream stream)
         {
-            return ByamlFile.LoadN(stream);
+            return ByamlFile.LoadN(stream, byteOrder: stream.GetByteOrder());
         }
 
         public static string ToYaml(this BymlFileData data)

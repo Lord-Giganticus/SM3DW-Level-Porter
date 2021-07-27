@@ -6,8 +6,6 @@ namespace Byml.cs.lib.Ext
 {
     public static class Extensions
     {
-        public static ByamlFile ByamlFile;
-
         public static BymlFileData GetBymlFileData(this FileInfo file)
         {
             return ByamlFile.LoadN(file.FullName);

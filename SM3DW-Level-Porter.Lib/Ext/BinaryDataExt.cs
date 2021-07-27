@@ -9,12 +9,14 @@ namespace SM3DW_Level_Porter.Ext
     {
         public static ByteOrder FlipByteOrder(this ByteOrder order)
         {
-            if (order == ByteOrder.BigEndian)
+            switch (order)
             {
-                return ByteOrder.LittleEndian;
-            } else
-            {
-                return ByteOrder.BigEndian;
+                case ByteOrder.BigEndian:
+                    return ByteOrder.LittleEndian;
+                case ByteOrder.LittleEndian:
+                    return ByteOrder.BigEndian;
+                default:
+                    throw new ArgumentNullException($"the byte order is null.");
             }
         }
 
@@ -66,13 +68,7 @@ namespace SM3DW_Level_Porter.Ext
 
         public static bool IsByteOrder(this ByteOrder order, ByteOrder byteOrder)
         {
-            if (order == byteOrder)
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+            return order == byteOrder;
         }
 
         public static ByteOrder ToByteOrder(this FileInfo info)

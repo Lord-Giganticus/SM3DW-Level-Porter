@@ -75,5 +75,7 @@ namespace SM3DW_Level_Porter.Ext
                 return false;
             }
         }
+
+        public static ByteOrder GetByteOrder<T>(this T stream) where T : Stream => stream.ReadStream().ByteOrder;
     }
 }

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using SM3DW_Level_Porter.Ext;
 
 namespace Syroot.BinaryData
 {
@@ -79,7 +80,7 @@ namespace Syroot.BinaryData
         /// <returns>The read values.</returns>
         public static byte[] ReadAllBytes<T>(this T stream) where T : Stream
         {
-            return stream.ReadBytes(int.Parse(stream.Length.ToString()));
+            return stream.ReadBytes(stream.Length.ToInt());
         }
 
         // ---- Read Async ----
